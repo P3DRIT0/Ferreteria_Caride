@@ -1,0 +1,398 @@
+/* ------------------------- */
+/* Estilos Generales */
+/* ------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+}
+
+body { 
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.texto-blanco {
+    font-weight: 300;
+    color: white;
+}
+
+.texto-blanco {
+    font-weight: 700;
+    color: #fff;
+}
+
+.texto-negro {
+	color: #000;
+}
+.texto-azul{
+    color: #0d6efd;
+}
+
+/* ------------------------- */
+/* Clases de Fullpage.js */
+/* ------------------------- */
+#fp-nav ul li a span {
+    background: #0d6efd;
+}
+
+#fp-nav ul li .fp-tooltip {
+    color:#0d6efd;
+}
+
+/* ------------------------- */
+/* Menu de Navegacion */
+/* ------------------------- */
+.nav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 70;
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.nav li,
+.nav a {
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    color: white;
+    transition: .5s ease;
+}
+
+.nav li.active {
+    border-bottom: 2px solid #0d6efd;
+}
+
+.menu li a {
+    transition: .5s ease;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li.active a,
+.menu li:hover a {
+    color: #0d6efd;
+}
+
+
+/* ------------------------- */
+/* Header */
+/* ------------------------- */
+
+
+.lista-contenedor{
+   
+    background-color: white;
+    width: 25%;
+    
+  }
+  .lista{
+    margin-top: 45%;
+  }
+ .lista li{
+ list-style: none;
+ font-family: 'Lato', sans-serif;
+ padding: 3%;
+}
+.imagenes_productos{
+   width: 75%; 
+   height: 55%;
+}
+
+
+.productos2 article:nth-child(1) {
+    background-image: url('https://cdn.pixabay.com/photo/2017/09/20/16/59/keys-2769243_960_720.jpg');
+}
+
+.productos2 article:nth-child(2) {
+    background-image: url('https://www.homelane.com/blog/wp-content/uploads/2016/06/shutterstock_1576278043.jpg');
+}
+
+.productos2 article:nth-child(3) {
+    background-image: url('https://cdn.pixabay.com/photo/2017/09/07/09/54/brush-2724384_960_720.jpg');
+}
+
+.productos2 .informacion-producto {
+    margin: 0px 30px;
+}
+.productos2 article { 
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+.productos2 .navbar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 70;
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.productos2 .navbar li,
+.productos2 .navbar a {
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    color: white;
+    transition: .5s ease;
+}
+
+.productos2 .navbar li.active {
+    border-bottom: 2px solid #0d6efd;
+}
+
+/*Novedades*/
+
+.contenedor-novedades{
+  width: 92%;
+  height: 80%;
+  padding-left: 5%;
+}
+
+.card h5{
+
+    font-family: 'Oswald', sans-serif;
+}
+.card .btn{
+  display: flex;
+  justify-content: center;
+}
+
+/* ------------------------- */
+/* Animaciones */
+/* ------------------------- */
+@keyframes bajar-subir {
+    0% { transform: translateY(20px); }
+    25% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
+}
+
+/* ------------------------- */
+/* Productos */
+/* ------------------------- */
+.productos article { 
+    background-position: center;
+    background-size: cover;
+}
+
+.productos article:nth-child(1) {
+    background-image: url('https://cdn.pixabay.com/photo/2017/09/20/16/59/keys-2769243_960_720.jpg');
+}
+
+.productos article:nth-child(2) {
+    background-image: url('https://www.homelane.com/blog/wp-content/uploads/2016/06/shutterstock_1576278043.jpg');
+}
+
+.productos article:nth-child(3) {
+    background-image: url('https://cdn.pixabay.com/photo/2017/09/07/09/54/brush-2724384_960_720.jpg');
+}
+
+.productos .informacion-producto {
+    margin: 0px 30px;
+}
+
+/* Barrita de la derecha*/
+.productos .informacion-producto::before {
+    content: "";
+    height: 120px;
+    width: 5px;
+    display: inline-block;
+    background: white;
+    position: absolute;
+    top: 47%;
+    margin: -10px;
+}
+
+.productos .modelo {
+    font-size: 95px;
+}
+
+.productos .descripcion {
+    font-size: 22px;
+}
+
+/* ------------------------- */
+/* Clases de fullpage.js - Flechas de Slide */
+/* ------------------------- */
+.fp-controlArrow.fp-next,
+.fp-controlArrow.fp-prev {
+    top: 95%;
+}
+
+.fp-controlArrow.fp-prev {
+    left: 80%;
+    border-width: 20px 20px 20px 0;
+    border-color: transparent #000 transparent transparent;
+}
+
+.fp-controlArrow.fp-next {
+    right: 50px;
+    border-width: 20px 0 20px 20px;
+    border-color: transparent transparent transparent #000;
+}
+
+
+/* ------------------------- */
+/* Footer */
+/* ------------------------- */
+.footer{
+    background-color: #000;
+}
+.footer .texto-naranja {
+    text-transform: uppercase;
+    font-size: 60px;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.footer h2 {
+    padding-bottom: 2%;
+    opacity: 0;
+    font-family: 'Oswald', sans-serif;
+    transition: 1s ease all;
+}
+
+.footer .redes-sociales {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    font-size: 50px;
+}
+
+.footer .redes-sociales a {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    color: #30313A;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    margin: 0 20px;
+}
+
+.footer .facebook i { color: #3b5998; }
+.footer .twitter i { color: #1da1f2; }
+.footer .instagram i { color: #c13584; }
+
+.footer .facebook:hover { background: #3b5998; }
+.footer .twitter:hover { background: #1da1f2; }
+.footer .instagram:hover { background: #c13584; }
+
+.footer .facebook:hover i { color: #fff; }
+.footer .twitter:hover i { color: #fff; }
+.footer .instagram:hover i { color: #fff; }
+
+/* ------------------------- */
+/* Mediaqueries */
+/* ------------------------- */
+@media screen and (max-width: 768px) {
+    .menu li a,
+    .menu li.active a {
+        font-size: 18px;
+    }
+    .modelo {
+        font-size: 40px;
+    }
+    .precio {
+        font-size: 23px;
+    }
+    .footer h2 {
+        font-size: 15px;
+    }
+    .footer .redes-sociales {
+        font-size: 30px;
+    }
+    .footer .redes-sociales a {
+        width: 70px;
+        height: 70px;
+    }
+
+    .footer .texto-naranja {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .header .titulo {
+        font-size: 60px;
+    }
+
+    .informacion-producto {
+        position: absolute;
+        top: 70%;
+    }
+
+    .fp-controlArrow.fp-next {
+        left: 100px;
+    }
+
+    .fp-controlArrow.fp-prev {
+        left: 25px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .nav {
+        display: block;
+        text-align: center;
+    }
+
+    .nav a {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .menu li a,
+    .menu li.active a {
+        font-size: 15px;
+        padding: 5px;
+    }
+
+    .titulo {
+        font-size: 45px;
+    }
+
+    .productos .modelo {
+        font-size: 30px;
+    }
+
+    .footer .texto-naranja {
+        font-size: 18px;
+    }
+
+    .footer .redes-sociales a {
+        width: 50px;
+        height: 50px;
+    }
+
+    .footer .redes-sociales a i {
+        font-size: 24px;
+    }
+}
