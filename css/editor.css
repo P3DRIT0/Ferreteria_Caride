@@ -1,0 +1,359 @@
+/*!
+ * http://suyati.github.io/line-control
+ * LineControl 1.1.0
+ * Copyright (C) 2014, Suyati Technologies
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+*/
+@charset "utf-8";
+/* base styles */
+body {
+	background: linear-gradient(0deg, rgba(13,110,253,1) 0%, rgba(0,0,0,1) 100%) !important;
+}
+.container {
+	padding-top: 10%;
+}
+.Editor-editor {
+	border: 1px solid #EEE;
+	border-radius: 0;
+	height: 300px;
+	padding: 1%;
+	word-wrap: break-word;
+}
+.masthead {
+	color: #FFFFFF;
+	margin-bottom: 0;
+	padding: 30px 0 10px;
+}
+h2.demo-text {
+	color: #51D2FF;
+	font-family: 'Roboto', sans-serif!important;
+	font-size: 45px;
+	font-weight: 300;
+	line-height: 40px;
+	margin: 20px 0;
+	text-align: center;
+}
+.features {
+	background: #EEE;
+	font-family: 'Roboto', sans-serif!important;
+	font-size: 25px;
+	font-weight: 300;
+	line-height: 35px;
+	padding: 20px 0 10px 0;
+	text-align: center;
+}
+.footer {
+	border-top: 1px solid #DDD;
+	font-size: 12px;
+	margin: 20px 0 10px 0;
+	padding-top: 10px;
+}
+/* Editor Styles */
+.Editor-container {
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin-top: 10px;
+}
+#menuBarDiv, #statusbar {
+	*background-color: #e6e6e6;
+	*border: 0;
+	*zoom: 1;
+	background-color: #f5f5f5;
+	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+	background-repeat: repeat-x;
+	border: 1px solid #cccccc;
+	border-bottom-color: #b3b3b3;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+#menuBarDiv {
+	border-bottom: none;
+	border-radius: 3px 3px 0 0;
+	min-height: 25px;
+	padding: 5px 0;
+}
+#menuBarDiv div:first-child {
+	margin-left: 3px;
+}
+#menuBarDiv .dropdown {
+	float: left;
+}
+#menuBarDiv .dropdown-toggle {
+	font-size: 14px;
+}
+#menuBarDiv .dropdown-toggle .caret {
+	border-top-color: #999;
+	margin-left: 5px;
+}
+#menuBarDiv a.btn {
+	margin-bottom: 3px;
+	position: relative;
+}
+#paletteCntr {
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+	height: auto;
+	margin-bottom: 10px;
+}
+#statusbar {
+	border-radius: 0 0 3px  3px;
+	border-top: none;
+	line-height: 30px;
+	min-height: 30px;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+#statusbar .label {
+	background: #BBB;
+	float: right;
+	font-size: 11.844px;
+	line-height: 14px;
+	margin: 6px 10px 0 0;
+	padding: 2px 4px;
+	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+}
+#paletteCntr ul {
+	float: left;
+	margin: 0 10px;
+	width: 145px;
+	z-index: 999;
+}
+#paletteCntr li {
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 1px;
+	padding: 0;
+	width: 16px;
+}
+#paletteCntr li div {
+	font-size: 12px;
+	margin: 0;
+	text-align: left;
+}
+div.activeColour {
+	background: #E8E8E8;
+	display: inline;
+	left: 0;
+	padding-bottom: 10px;
+	position: absolute;
+	top: 30px;
+	z-index: 10000;
+}
+#colorpellete, #bg_colorpellete {
+	float: left;
+}
+.bg_activeColour {
+	display: inline;
+	float: left;
+	position: absolute;
+}
+.specialCntr {
+	background-color: #E8E8E8!important;
+	display: inline;
+	left: 0;
+	position: absolute;
+	top: 30px;
+	width: 176px;
+}
+.specialCntr ul {
+	-moz-padding-start: 0px;
+	-webkit-padding-start: 0px;
+	float: left;
+	margin: 10px;
+	white-space: normal;
+}
+.specialCntr ul li {
+	background: #FFF;
+	color: #333;
+	cursor: pointer;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	height: 20px;
+	list-style: none;
+	margin: 3px;
+	text-align: center;
+	width: 20px;
+}
+.specialCntr ul li:hover {
+	background: #666;
+	color: #FFF;
+}
+pre {
+	/* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+	/* Opera 4-6 */
+  white-space: -o-pre-wrap;
+	/* Opera 7 */
+  word-wrap: break-word;
+	/* css-3 */
+  white-space: -moz-pre-wrap;
+	white-space: pre-wrap;
+}
+.on {
+	display: block;
+	position: relative;
+}
+.fullscreen {
+	height: 100%;
+	left: 0;
+	margin: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+.fullscreen #statusbar {
+	border-top: 1px solid #DDD;
+	bottom: 0;
+	position: fixed;
+}
+.fullscreen #contentarea {
+	border: none;
+}
+/***Custome Added Css for Left Tabs***/
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs {
+	border-bottom: 0;
+}
+.tabs-left ul {
+	-webkit-padding-start: 0px;
+}
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li {
+	float: none;
+}
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+	margin-bottom: 3px;
+	margin-right: 0;
+	min-width: 74px;
+}
+.tabs-left > .nav-tabs {
+	border-right: 1px solid #ddd;
+	float: left;
+	margin-right: 19px;
+}
+.tabs-left > .nav-tabs > li > a {
+	-moz-border-radius: 4px 0 0 4px;
+	-webkit-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;
+	margin-right: -1px;
+}
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+	border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+	outline: none;
+}
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
+	*border-right-color: #ffffff;
+	border-color: #ddd transparent #ddd #ddd;
+	color: rgb(0, 176, 245) !important;
+	outline: none;
+}
+/**form control width**/
+@-moz-document url-prefix() {
+	.form-control {
+		padding: 6px 12px 10px 12px;
+	}
+}
+.form-control-width {
+	width: 100px;
+}
+.form-control-link {
+	display: inline-block;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	width: 204px;
+}
+.form-control-button-right {
+	width: 204px;
+}
+.inline-form-control {
+	display: inline !important;
+}
+.btn-group + .btn-group {
+	margin-left: 5px;
+}
+.activeColour ul {
+	-moz-padding-start: 0px;
+	-webkit-padding-start: 0px;
+}
+h1 {
+	line-height: 40px;
+	margin-top: 10px;
+}
+.col-lg-6 nth:child(1) {
+	margin-left: 0px;
+}
+.nopadding {
+	padding: 0px;
+}
+.nopadding-right {
+	padding-right: 0px;
+}
+.modal {
+	overflow-y: auto;
+}
+.padding-top {
+	padding-top: 10px;
+}
+/*** Drop Down Menu***/
+.dropdown-submenu {
+	position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+	-moz-border-radius: 0 6px 6px 6px;
+	-webkit-border-radius: 0 6px 6px 6px;
+	border-radius: 0 6px 6px 6px;
+	left: 100%;
+	margin-left: -1px;
+	margin-top: -6px;
+	top: 0;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+	display: block;
+}
+.dropdown-submenu>a:after {
+	border-color: transparent;
+	border-left-color: #cccccc;
+	border-style: solid;
+	border-width: 5px 0 5px 5px;
+	content: " ";
+	display: block;
+	float: right;
+	height: 0;
+	margin-right: -10px;
+	margin-top: 5px;
+	width: 0;
+}
+.dropdown-submenu:hover>a:after {
+	border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+	float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+	-moz-border-radius: 6px 0 6px 6px;
+	-webkit-border-radius: 6px 0 6px 6px;
+	border-radius: 6px 0 6px 6px;
+	left: -100%;
+	margin-left: 10px;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a {
+	background-color: #0081c2;
+	background-image: linear-gradient(to bottom,#08c,#0077b3);
+	background-repeat: repeat-x;
+	color: #fff;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc',endColorstr='#ff0077b3',GradientType=0);
+	text-decoration: none;
+}
+.dropdown-menu>li>a {
+	cursor: pointer;
+}
