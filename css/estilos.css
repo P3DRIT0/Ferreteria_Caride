@@ -45,6 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 	position: fixed;
 	width: 100%;
 	z-index: 70;
+	
 }
 .nav li,
 .nav a {
@@ -73,17 +74,35 @@ h1, h2, h3, h4, h5, h6 {
 /* Header */
 /* ------------------------- */
 .lista-contenedor {
-	background-color: white;
+	background-color:black;
 	width: 25%;
 }
 .lista {
-	margin-top: 45%;
+	margin-top: 40%;
 }
 .lista li {
 	font-family: 'Lato', sans-serif;
 	list-style: none;
 	padding: 3%;
+	margin-right: 10%;
+	background-color: white;
+	margin-top: 3%;
+	font-family: 'Oswald', sans-serif;
+	font-size: 25px;
+	cursor:pointer;
+	
+	
 }
+.producto_activo{
+	color: #0d6efd;
+	margin-left:10px;
+	margin-right:30px !important;
+	}
+	.lista li:hover {
+		color: #0d6efd;
+		margin-left:10px;
+		margin-right:30px;
+	}
 .imagenes_productos {
 	height: 55%;
 	width: 75%;
@@ -113,6 +132,7 @@ h1, h2, h3, h4, h5, h6 {
 	position: fixed;
 	width: 100%;
 	z-index: 70;
+	background-color: black !important;
 }
 .productos2 .navbar li,
 .productos2 .navbar a {
@@ -124,6 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-decoration: none;
 	text-transform: uppercase;
 	transition: .5s ease;
+	
 }
 .productos2 .navbar li.active {
 	border-bottom: 2px solid #0d6efd;
@@ -162,6 +183,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-position: center;
 	background-size: cover;
 }
+
 .productos article:nth-child(1) {
 	background-image: url('https://cdn.pixabay.com/photo/2017/09/20/16/59/keys-2769243_960_720.jpg');
 }
@@ -191,6 +213,9 @@ h1, h2, h3, h4, h5, h6 {
 .productos .descripcion {
 	font-size: 22px;
 }
+.productos2 .navbar{
+	cursor:pointer;
+}
 /* ------------------------- */
 /* Clases de fullpage.js - Flechas de Slide */
 /* ------------------------- */
@@ -212,7 +237,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Footer */
 /* ------------------------- */
 .footer {
-	background-color: #000;
+	background-color: black;
 }
 .footer .texto-naranja {
 	font-size: 60px;
