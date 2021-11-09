@@ -1,5 +1,5 @@
 <?php
-require_once '../Registro/BD_registro.php';
+require_once '../Config/conexiones_BD.php';
 
 
 /**
@@ -9,7 +9,6 @@ require_once '../Registro/BD_registro.php';
  * @return boolean Verdadero si existe el usuario con ese usuario en la base de datos
  */
 function comprobar_usuario($usuario) {
-    echo $usuario;
     try {
         $usuario_registrado = false;
         $base = conectar('admin');
@@ -17,7 +16,6 @@ function comprobar_usuario($usuario) {
         $sentencia->bindParam(':nombre', $usuario);
         $sentencia->execute();
         $result = $sentencia->fetch(PDO::FETCH_ASSOC);
-        print_r($result);
         if (!empty($result["nombre"])) {
             $usuario_registrado = true;
         }
@@ -68,10 +66,12 @@ function crear_sesion($usuario) {
         $sentencia->bindParam(':usuario', $usuario);
         $sentencia->execute();
         $result = $sentencia->fetch(PDO::FETCH_ASSOC);
-        session_start();
-        $id_usuario=id_usuario($usuario)[0][0];
-        $_SESSION['id'] =$id_usuario; 
+        print_r($result);
+		session_start();
         $_SESSION['usuario'] = $result['nombre'];
+		$_SESSION['id_usuario'] = $result['nombre'];
+		$sentencia = null;
+        $base = null;
     } catch (PDOException $e) {
         die('No se pudo conectar: ' . $e->getMessage());
     }

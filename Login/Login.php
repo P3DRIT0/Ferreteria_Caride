@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuario = $_POST['usuario'];
         
         if (comprobar_usuario($usuario)) {
-            
             if (cotejar_contraseñas($contraseña, $usuario)) {
                 crear_sesion($usuario);
             } else {

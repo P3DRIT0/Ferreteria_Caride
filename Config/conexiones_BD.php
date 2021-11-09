@@ -5,10 +5,13 @@
  */
 function conectar ($rol){
     try{
-    $campos = configuracion('../config/BD_configuracion.xml', '../config/BD_configuracion.xsd', $rol);
+    $campos = configuracion('../Config/BD_configuracion.xml', '../Config/BD_configuracion.xsd', $rol);
     $server="localhost";
     $dbname="ferreteria_caride";
     $base = new PDO("mysql:dbname=$dbname;host=$server", $campos[0], $campos[1]);
+		if (!$base) {
+    die("Connection failed: " . mysqli_connect_error());
+}
         return $base;
     } catch (PDOException $ex) {
         echo $ex->getMessage();

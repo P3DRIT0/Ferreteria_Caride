@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['id'] =$id_usuario; 
             $_SESSION['usuario'] = $nombre;
             $_SESSION['rol'] = "Usuario_registrado";
-            header('Location:../Ferreteria_Caride.html');
+            header('Location:../index.html');
         }
     } else {
         if (isset($_POST['nombre'])) {

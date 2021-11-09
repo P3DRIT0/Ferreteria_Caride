@@ -1,46 +1,46 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css");
 html,
 body {
-  font-size: 23px;
-    background: rgb(13,110,253);
-    background: linear-gradient(0deg, rgba(13,110,253,1) 0%, rgba(0,0,0,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1);
-  
-
-  overflow-y:hidden;
-
+    font-size: 23px;
+    background: rgb(13, 110, 253);
+    background: linear-gradient(0deg, rgba(13, 110, 253, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
+    overflow-y: hidden;
 }
 
-
 body {
-  padding-top: 50px;
+    padding-top: 50px;
 }
 
 .pad-top-10 {
-  padding-top: 10px;
+    padding-top: 10px;
 }
+
 .pad-top-15 {
-  padding-top: 15px;
+    padding-top: 15px;
 }
 
-.panel-default .panel-heading{
-  background-color: #333;
-  color: #999;
-  text-transform: uppercase;
-  font-size: 12px;
+.panel-default .panel-heading {
+    background-color: #333;
+    color: #999;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
-.contenedor_panel{
+.contenedor_panel {
     display: flex;
     flex-direction: row;
 }
-.contenedor_post{
+
+.contenedor_post {
     padding: 3%;
 }
 
-.card-header{
+.card-header {
     color: white;
 }
-i,span{
-  color:white;
+
+i,
+span {
+    color: white;
 }
