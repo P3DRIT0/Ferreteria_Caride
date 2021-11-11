@@ -26,9 +26,11 @@ body {
     text-transform: uppercase;
     font-size: 12px;
 }
-.texto{
-width:80%;
+
+.texto {
+    width: 80%;
 }
+
 .contenedor_panel {
     display: flex;
     flex-direction: row;
