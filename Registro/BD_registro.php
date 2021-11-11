@@ -1,6 +1,6 @@
 <?php
 
-include '../config/conexiones_BD.php';
+include '../Config/conexiones_BD.php';
 
 /**
  * Método que recibe por cabecera los datos de un usuario nuevo para insertarlos 
