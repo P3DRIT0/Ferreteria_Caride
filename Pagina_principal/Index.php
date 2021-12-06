@@ -1,5 +1,5 @@
 <?php 
-include "./Bd_index.php";    
+ include "./Bd_index.php"; 
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -11,10 +11,10 @@ include "./Bd_index.php";
         <title>Ferreteria Caride</title>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Oswald&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href=".//css/fullpagejs.css">
+        <link rel="stylesheet" href="../css/fullpagejs.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-		<script src="js/jquery-1.12.0.js"></script>
-        <link rel="stylesheet" href="css/estilos.css">
+		<script src="../js/jquery-1.12.0.js"></script>
+        <link rel="stylesheet" href="../css/estilos.css">
     </head>
 
     <body>
@@ -147,15 +147,16 @@ include "./Bd_index.php";
                 <div id="contenedor-novedades" class="contenedor-novedades">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <?php 
+                       
                     $post=cargar_post();
                     for($i = 0; $i < count($post); ++$i) {
                        echo '<div class="col">
                             <div class="card">
-                                <img src="'.$post[$i][5].'" style="height: 230px;" class="card-img-top" alt="..." />
+                                <img src="'.$post[$i][4].'" style="height: 230px;" class="card-img-top" alt="..." />
                                 <div class="card-body">
-                                    <h5 class="card-title">'.$post[$i][3].'</h5>
+                                    <h5 class="card-title">'.$post[$i][2].'</h5>
                                     <p class="card-text">
-                                        '.$post[$i][4].'
+                                        '.$post[$i][3].'
                                         <br>
                                         <a href="#" class="btn btn-primary">Seguir leyendo</a>
                                     </p>
@@ -177,12 +178,14 @@ include "./Bd_index.php";
                     <a href="#" class="twitter"><i class="fab fa-twitter-square"></i></a>
                     <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
                 </p>
+                <div class="login"><a href="https://prueba.ferreteriacaride.es/Login/Login.php">footer1</a></div>
             </footer>
+            
         </main>
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js"></script>
-        <script src="js/app.js"></script>
+        <script src="../js/app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		
