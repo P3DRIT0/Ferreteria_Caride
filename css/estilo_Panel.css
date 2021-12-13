@@ -1,4 +1,3 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css");
 html,
 body {
     font-size: 23px;
@@ -16,6 +15,11 @@ body {
     padding-top: 10px;
 }
 
+.bi-trash-fill,
+.bi-pencil-square {
+    color: #333;
+}
+
 .pad-top-15 {
     padding-top: 15px;
 }
@@ -26,9 +30,11 @@ body {
     text-transform: uppercase;
     font-size: 12px;
 }
-.texto{
-width:80%;
+
+.texto {
+    width: 75%;
 }
+
 .contenedor_panel {
     display: flex;
     flex-direction: row;

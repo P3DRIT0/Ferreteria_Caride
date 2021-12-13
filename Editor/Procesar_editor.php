@@ -30,9 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //Movemos y validamos que el archivo se haya cargado correctamente
 //El primer campo es el origen y el segundo el destino
                 if (move_uploaded_file($source, $target_path)) {
-                    guardar_posts($titulo,$decorta,$target_path,$deslarga,$autor);
-					echo "llega";
-					header("Location:../Panel_control/Panel_control.php");
+                   guardar_posts($titulo,$decorta,$target_path,$deslarga,$autor);
+                   $id=cargar_nombre();
+                    crear_contador($contador=0,$id);
+				 header("Location:../Panel_control/Panel_control.php");
                     
                 } else {
                     echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";

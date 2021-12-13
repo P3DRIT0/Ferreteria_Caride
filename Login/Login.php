@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="login">
-        <h1>Bienvevido</h1>
+        <h1>Bienvenido</h1>
         <form method="post">
             <input type="text" name="usuario" placeholder="Usuario" required="required" />
             <input type="password" name="contraseña" placeholder="Contraseña" required="required" />

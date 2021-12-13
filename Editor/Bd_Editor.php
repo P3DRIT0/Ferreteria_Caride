@@ -12,12 +12,29 @@ function guardar_posts($titulo,$decorta,$imagen,$deslarga,$creador_post){
         $sql->execute();
         $sql = null;
         $base = null;
-		return true;
     } catch (PDOException $e) {
         print $e->getMessage();
 		return false;
     }
 }
+function crear_contador($contador,$id_post){
+    echo $contador,$id_post;
+    try {
+    $base = conectar("admin");
+    $sql = $base->prepare("INSERT INTO datos(contador_clicks,id_posts) VALUES (:contador_clicks,:id_posts)");
+    $sql->bindParam(":contador_clicks",$contador);
+    $sql->bindParam(":id_posts",$id_post);
+    $sql->execute();
+    $sql = null;
+    $base = null;
+} catch (PDOException $e) {
+    print $e->getMessage();
+    return false;
+}
+}
+
+
+
 function cargar_nombre(){
     try {
     $base = conectar("admin"); 

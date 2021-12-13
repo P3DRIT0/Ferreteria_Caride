@@ -1,5 +1,6 @@
 <?php 
  include "./Bd_index.php"; 
+ session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -33,6 +34,13 @@
                 <li data-menuanchor="contacto">
                     <a href="#contacto">Contacto</a>
                 </li>
+                <?php if(!empty($_SESSION['usuario'])){
+                echo ' <li data-menuanchor="Panel_control">
+                <a href="../Panel_control/Panel_control.php">Panel de control</a>
+            </li>';
+                    
+                } ?>
+                
             </ul>
         </nav>
 
@@ -143,7 +151,6 @@
                     </div>
             </section>
             <section class="section novedades">
-
                 <div id="contenedor-novedades" class="contenedor-novedades">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <?php 
@@ -151,6 +158,7 @@
                     $post=cargar_post();
                     for($i = 0; $i < count($post); ++$i) {
                        echo '<div class="col">
+                       <form id="form_'.$post[$i][0].'" action="../Pagina_post/Post_Página.php" method="post" >
                             <div class="card">
                                 <img src="'.$post[$i][4].'" style="height: 230px;" class="card-img-top" alt="..." />
                                 <div class="card-body">
@@ -158,17 +166,20 @@
                                     <p class="card-text">
                                         '.$post[$i][3].'
                                         <br>
-                                        <a href="#" class="btn btn-primary">Seguir leyendo</a>
+                                        <button value="'.$post[$i][0].'" href="#" class="btn btn-primary ver_post">Seguir leyendo</button>
+                                        <input id="id_post" name="id_post" type="text" value="'.$post[$i][0].'" class="d-none">
                                     </p>
                                 </div>
                             </div>
-                        </div>';
+                        </div>
+                        </form>';
+                        
                     };
                         ?>
                     </div>
 
                 </div>
-
+                
             </section>
             <!--Seccion Redes Sociales  -->
             <footer class="section footer">
@@ -213,6 +224,10 @@
                 $("#Ferreteria8").click(mangeras);
                 $("#Ferreteria9").click(buzones);
 
+                $(".ver_post").click(function() {
+                var id=$(this).val();
+                $("#form_"+id).submit();
+                });
 
             });
 
@@ -300,31 +315,31 @@
             }
 
             function complementos() {
-                cambiar_imagenes("https://cdn.pixabay.com/photo/2018/01/11/06/26/construction-3075498_960_720.jpg", "https://blog.bextok.com/wp-content/uploads/2017/07/iStock-91502297-e1500727396458.jpg", "https://cdn.pixabay.com/photo/2015/11/11/12/34/occupational-safety-and-health-1038550_960_720.jpg")
+                cambiar_imagenes("", "", "")
                 $("#lista li").removeClass("producto_activo")
                 $(this).addClass("producto_activo");
             }
 
             function plasticos() {
-                cambiar_imagenes("https://cdn.pixabay.com/photo/2015/05/22/23/56/wine-bottle-780102_960_720.jpg", "https://cdn.pixabay.com/photo/2014/09/03/06/56/welcome-434118_960_720.png", "http://www.tiendadeplasticos.es/ControlIntegral/imagenes/articulos/rollo-15-kgs-200-metros-polietileno-tubo-80-cm-color-azul-material-industrial-plastico-por-metros-plastics-pujol-s-l-art.jpg ")
+                cambiar_imagenes("", "", "")
                 $("#lista li").removeClass("producto_activo")
                 $(this).addClass("producto_activo");
             }
 
             function botellas_camping() {
-                cambiar_imagenes("https://cdn.pixabay.com/photo/2017/08/05/20/57/portable-2585538_960_720.jpg", "https://cdn.pixabay.com/photo/2016/08/11/08/00/gas-1584988_960_720.jpg", "https://cdn.pixabay.com/photo/2014/01/24/00/30/light-250848_960_720.jpg")
+                cambiar_imagenes("./Multimedia/camping3.jpg", "./Multimedia/camping.jpg", "./Multimedia/camping2.jpg")
                 $("#lista li").removeClass("producto_activo")
                 $(this).addClass("producto_activo");
             }
 
             function escaleras() {
-                cambiar_imagenes("https://images.pexels.com/photos/5691661/pexels-photo-5691661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", "https://cdn.pixabay.com/photo/2015/03/20/16/13/head-682484_960_720.jpg", "https://images.pexels.com/photos/5767931/pexels-photo-5767931.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+                cambiar_imagenes("", "", "")
                 $("#lista li").removeClass("producto_activo")
                 $(this).addClass("producto_activo");
             }
 
             function carpinteria() {
-                cambiar_imagenes("https://lh3.googleusercontent.com/proxy/QeHTN5uWoDfI3FhG6xg0Hy2LCMHD4xUcV7U8OjlXgQ0weB1E3b2KXu16OJl2po8oU3eMyysDfxKGl6hyh_DxtNT0U3T_0-95qrIkekQjXFTtiwn0", "https://www.ikea.com/es/es/images/products/utrusta-herrajes__0624701_pe691988_s5.jpg", "https://bullimporter.com/wp-content/uploads/2016/08/herrajes-para-muebles-1.png")
+                cambiar_imagenes("", "", "")
                 $("#lista li").removeClass("producto_activo")
                 $(this).addClass("producto_activo");
             }

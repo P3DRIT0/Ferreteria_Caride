@@ -1,4 +1,70 @@
+<?php
+require_once './Bd_Panel.php';
+session_start();
+$titulo_post="";
+$img="";
+$descorta="";
+$deslarga="";
+if (isset($_POST["todos_post"])) {
+    $posts = cargar_todos_post();
+}else{
+$posts = cargar_post();
+}
+if (isset($_POST["numero_post_editar"])) {
+  $numero_post=$_POST['numero_post_editar'];  
+  $titulo_post=$posts[$numero_post][2];
+  $img=$posts[$numero_post][4];
+  $descorta=$posts[$numero_post][3];
+  $deslarga=$posts[$numero_post][5];
+}
+
+if (isset($_POST['form_titulo']) && isset($_POST['form_descorta']) && isset($_POST['form_deslarga'])) {
+    $num_post=$_POST['num_post'];
+    $titulo=$_POST['form_titulo'];
+    $decorta=$_POST['form_descorta'];
+    $deslarga=$_POST['form_deslarga'];
+    $autor=$_SESSION['id_usuario'];
+    if ($_FILES["archivo"]["name"][0]!= null) {
+        unlink($posts[$num_post][4]);
+        $numero =$posts[$num_post][4];
+        $rutas = array();
+//Como el elemento es un arreglos utilizamos foreach para extraer todos los valores
+        foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
+//Validamos que el archivo exista
+            if ($_FILES["archivo"]["name"][$key]) {
+                $filename = $numero; //Obtenemos el nombre original del archivo
+                $source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
+                $directorio = '../Editor/Imagenes_Posts'; //Declaramos un  variable con la ruta donde guardaremos los archivos
+//Validamos si la ruta de destino existe, en caso de no existir la creamos
+                if (!file_exists($directorio)) {
+//0777 son los permisos
+                 mkdir($directorio, 0777) or die("No se puede crear el directorio;n");
+                }
+                $dir = opendir($directorio); //Abrimos el directorio de destino
+                $target_path =$filename; //Indicamos la ruta de destino, así como el nombre del archivo
+                $rutas[] = $target_path;
+//Movemos y validamos que el archivo se haya cargado correctamente
+//El primer campo es el origen y el segundo el destino
+                if (move_uploaded_file($source, $target_path)) {
+                    actualizar_post($posts[$num_post][0],$titulo,$decorta,$target_path,$deslarga,$autor);
+				  header("Location:../Panel_control/Panel_control.php");
+                    
+                } else {
+                    echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
+                }
+                closedir($dir); //Cerramos el directorio de destino
+            }
+    
+}		 
+}else{
+    actualizar_post($posts[$num_post][0],$titulo,$decorta,$posts[$num_post][4],$deslarga,$autor);
+     header("Location:../Panel_control/Panel_control.php");
+}
+
+}
+?>
 <!DOCTYPE html>
+
 <head>
     <title></title>
     <script type="text/javascript" src="..//js/jquery-1.12.0.js"></script>
@@ -9,23 +75,24 @@
 </head>
 
 <body>
-<form action="Procesar_editor.php" id="form"  method="post" enctype="multipart/form-data">
+<form action="editor.php" id="form"  method="post" enctype="multipart/form-data">
     <div class="contenedor">
         <div class="editor">
-            <p class="titulo_post">Titulo del Post <input id="titulo" name="form_titulo" class="titulo" type="text" /></p>
+            <p class="titulo_post">Titulo del Post <input id="titulo" value="<?php echo $titulo_post ?>" name="form_titulo" class="titulo" type="text" /></p>
             <p class="titulo_post">
-                <a>Imagen post</a><input type="file" id="wizard-picture" class="form-control" name="archivo[]" multiple=""> </p>
+                <a>Imagen post</a><input type="file"  id="wizard-picture" class="form-control" name="archivo[]" multiple=""> </p>
             <textarea id="form_descorta" class="d-none" name="form_descorta"></textarea>  
             <textarea id="form_deslarga" class="d-none" name="form_deslarga"></textarea>
-            </form>
+            <input  type="text" class="d-none" value="<?php echo $numero_post?>" id="num_post" name="num_post"></input>
+        </form>
             <p class="titulo_post">Pequeña descripcion
-                <textarea id="textarea" maxlength="130"></textarea><br>
+                <textarea id="textarea" maxlength="130"><?php echo $descorta ?></textarea><br>
                 <span id="current_count">0</span>
                 <span id="maximum_count">/130</span></p>
 
-            <textarea id="texto_grande" class="content" name="textarea"></textarea>
+            <textarea id="texto_grande" class="content" name="textarea"><?php echo $deslarga ?></textarea>
             <br>
-            <input type="submit" id="crear_form" class="btn btn-primary crear"  value="Crear post"/>
+            <input type="submit" id="modificar_post" class="btn btn-primary crear"  value="Modificar post"/>
         </div>
        
         <div class="card_previsualizacion ">
@@ -39,19 +106,19 @@
         
             <div class="card ">
                 <div class="picture">
-                    <img src="" class="picture-src card-img-top" id="wizardPicturePreview" style="height: 230px;" title="">
+                    <img src="<?php echo $img?>" class="picture-src card-img-top" id="wizardPicturePreview" style="height: 230px;" title="">
                 </div>
-                <h5 class="card-title texto_inicial" id="titulo_card">Titulo de prueba cambiar a la izquierda</h5>
+                <h5 class="card-title texto_inicial" id="titulo_card"><?php echo $titulo_post ?></h5>
                 <div id="card1" class="card-body">
                     
                     <p class="card-text texto_inicial" id="texto_card">
-                        Texto de ejemplo cambialo en el apartado de pequeña descripción
+                    <?php echo $descorta ?>
                     </p>
                     <a href="#" class="btn btn-primary">Seguir leyendo</a>
                 </div>
                 <div id="card2" class="card-body d-none">
                         <p class="card-text texto_inicial" id="texto_card_estendido">
-                            Texto de ejemplo cambialo en el apartado del editor de texto
+                        <?php echo $deslarga ?>
                         </p>
                     </div>
             </div>
@@ -61,7 +128,7 @@
     </div>
 <script>
     $(document).ready(function() {
-        $("#crear_form").click(function() {
+        $("#modificar_post").click(function() {
             $("#form_descorta").text($("#textarea").val());
             $("#form_deslarga").text($(".richText-initial").val());
             $("#form").submit()

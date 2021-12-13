@@ -39,3 +39,27 @@ function id_usuario($nombre){
         die('No se pudo conectar: ' . mysql_error());
     }
 }
+function lista_users(){
+    try {
+        $base = conectar('admin');
+        $sentencia = $base->prepare("SELECT * FROM usuarios");
+        $sentencia->execute();
+        $result = $sentencia->fetchAll();
+        return $result;
+        $sentencia=null;
+        $base=null;
+} catch (PDOException $e) {
+        die('No se pudo conectar: ' . mysql_error());
+    }
+}
+function borrar_usuario($id){
+try {
+    $base = conectar('admin');
+       $sentencia = $base->prepare("DELETE FROM usuarios WHERE id_usuario=:id_usuario");
+       $sentencia->bindParam(':id_usuario', $id);
+       $sentencia->execute();
+   $sentencia = null;
+   $base = null;
+} catch (PDOException $e) {
+   print $e->getMessage();
+}}

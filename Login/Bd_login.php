@@ -70,6 +70,7 @@ function crear_sesion($usuario) {
 		session_start();
         $_SESSION['usuario'] = $result['nombre'];
 		$_SESSION['id_usuario'] = $result['id_usuario'];
+        $_SESSION['img_perfil'] = $result['imagen_usuario'];
 		$sentencia = null;
         $base = null;
     } catch (PDOException $e) {

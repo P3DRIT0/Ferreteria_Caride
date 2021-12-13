@@ -42,9 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="password" name="contraseña" placeholder="Contraseña" required="required" />
             <input type="password" name="contraseña2" placeholder="Repetir contraseña" required="required" />
             <button type="submit" class="btn btn-primary btn-block btn-large">Registrarse</button>
+            <br>
+            <a type="button" href="../Panel_control/Panel_control.php" class="btn_borrar btn btn-primary">Atras</a>
             <a style="color:red"><?php echo $Err_contraseñas; ?></a>
            
         </form>
+        
     </div>
+   
 </body>
 </html>
